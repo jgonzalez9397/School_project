@@ -1,0 +1,105 @@
+body {
+	 
+    border:2px double red;
+    background: rgba(150,150,150,0.9);
+}
+
+.topbox{
+	width: 960px;
+	height: 200px;
+	border:2px solid white;
+	margin: 0 auto;
+
+
+}
+/* */
+.main {
+	width: 960px;
+	height: 830px;
+	margin: 0 auto;
+	
+	border:2px solid white;
+}
+
+.box {
+	float: left;
+	border:none;
+	margin: 10px;
+	padding: 70px;
+	background-color: rgba(80,80,80,0.7);
+	focus {outline:0;}
+}
+
+.box:focus {outline:0;}
+
+rgr.box:hover {
+	    background-color: rgba(150,150,150,0.9);
+}
+
+
+.test2 {
+   	    margin-left: 425px;
+        width:100px;
+    	border:3px solid #930000;
+    	background: #930000;
+    	color: white;
+    	font-size: 12px;
+    	box-shadow: 7px 0px 10px 0px gray; 
+}
+
+.test2:hover{
+	    border:3px solid red;
+    	background: red;
+    	color: white;
+        font-size: 13px;
+}
+
+/* information of the object */ 
+.loggingStyle{
+        margin:0 auto;
+    	text-align: center;
+   		width:730px;
+		padding:5px;
+		background: rgba(150,150,150,0.9);
+		color: white;
+}
+
+/* styling for the replay button */ 
+.testbuton{
+        border:none;
+        height: 27px;
+		float: right;
+		width:100px;
+		background: #A0BFFF;
+		margin:none;
+		border-radius: 100px;
+		color:white;
+		box-shadow: 5px 0px 5px 0px gray;
+}
+
+.testbuton:focus{
+	 width:60px;
+     font-size:12px;
+     background:#A0BFFF;
+
+
+
+
+}
+
+
+.bottombox{
+		width: 780px;
+		height: 200px;
+		border:2px solid white;
+		margin: 0px auto;
+		/*This is the black line underneath the Logging Audio button*/
+		border-top: 3px solid white;
+		border-right: none; 
+				border-left: none; 
+				border-bottom: none;
+
+}
+
+
+
