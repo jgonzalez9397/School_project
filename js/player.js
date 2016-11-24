@@ -40,11 +40,10 @@ functionalities */
 
               
 // global log counter variable 
-                  var logCounter = 0; 
+              var logCounter = 0; 
 
-              // array that stores playing audio objects / global variable 
-              var ButtonsPlaying = []; 
-              var sessionStorage = [];   // session_storage array that stores all of the newly created array elements 
+              var ButtonsPlaying = [];    // array that stores playing audio objects / global variable 
+
               
 
             //this id is passed as an argument to the playpause method to test later on. 
@@ -218,9 +217,12 @@ functionalities */
               
 
 				}
-                  
-                 
 
+                 
+                    
+
+
+                    var test;    //running total
 
            function log(){
            	           
@@ -238,8 +240,22 @@ functionalities */
 
                      newElement.className = "loggingStyle"; 
                      playButton.className = "testbuton";   // test
-                     playButton.id = "newbutton"+logCounter;          // assinging the id of newbutton a concatinated string
-                     playButton.onclick =  function() { getData(this.id); };   // playbutton fires only when clicked
+                    // playButton.id = "newbutton"+logCounter;     // id value is not being passed by to the pauseplay function
+                   
+
+
+                     test = "newbutton"+logCounter; 
+
+                     playButton.setAttribute("id", test);     // this is another test
+
+
+                     console.log(test, "testing if its a another string ");
+
+
+                      console.log(playButton.id, "this is the log string fuck!!!"); // this is good 
+                      playButton.onclick =  function() { pauseplay(this.id); };   // playbutton fires only when clicked
+
+
 
                      var destinationNode2 = document.getElementsByTagName('div')[2]; //test- pick the destination parent node/tag
 
@@ -250,74 +266,186 @@ functionalities */
                          destinationNode.appendChild(newElement);      // test
 
 
-
-
-
-                         }
+                            
 
 
 
 
 
-                         // test storing the objects selected into the newly created blue play button
+                        hello(test);
+
+
+
+
+             			function hello() {
+  								
+
+
+
+
+                          var loggedButtons = [];                 //create a new array that stores audio combination
+
+                          for(var x=0; x < ButtonsPlaying.length; x++){
+
+                          loggedButtons[x] = jQuery.extend(true, {}, ButtonsPlaying[x]); // using jqury for deep copy
+  
                          
-                       function getData(newbuttonID){
+                            }
+                          console.log(loggedButtons, "this the copy");     
+                          console.log(ButtonsPlaying, "this the global");     
 
-                       var loggedButtons =  new Array();                 //create a new array that stores audio combination
-
-                       for(var x=0; x < ButtonsPlaying.length; x++){
-
-                       loggedButtons[x] = jQuery.extend(true, {}, ButtonsPlaying[x]);   // using jqury for deep copy
-
-                       window.anime = loggedButton;    // this is suppose to be act like a global session storage 
-
-                       anime.push(newbuttonID);  // pushing the id to the end of  the array
-
-
-
-
-
-                       // lets see if this works 
-                       // i want to create a global storage objects that holds an array of window.animes elements 
-
-
-                            }                       
-                       loggedButtons[0] = 2;           // this is too test if the deep copy works/ this will removed in later 
-
+                            
+							
+							sessionStorage.setItem(test,JSON.stringify(loggedButtons)); 
+                           //console.log(JSON.parse(sessionStorage.getItem(newbuttonId)));
                            
-                      console.log(ButtonsPlaying, "this the orginal");
+                           
+                           
+                          
 
-                       // checking if the elements from the global variable is getting store in new loggedButton
-                       console.log(anime, "this is the deep copy");
+                          console.log(loggedButtons, "this the copy after it gets stringify");     
+                          console.log(JSON.parse(sessionStorage.getItem(test)), "testing sesstionstorage in the hello method ");      
 
-                       // checking  to see  if the js created id attribute was passed to the getData method
-                       console.log(document.getElementById(newbuttonID)) ;  
-
-
-                       pauseplay(anime,newbuttonID); 
+                          console.log("value of ID is : "+ test); 
 
 
-                       }
-               
-                      function pauseplay(new_global_array, newbuttonId){
+													} 
+												}
+
+
+							
+
+
+      					
+
+
+                        function pauseplay(test){
+
+                     
+                     console.log("this is the newbutton test", test );
                         
-                       
-                      for (var index =0; index < new_global_array.length; index++){
+            console.log(JSON.parse(sessionStorage.getItem(test)), "testing sesstionstorage in the pauseplay method ");  
+                      
 
-                         if(new_global_array[index].paused){
-                         new_global_array[index].play; 
 
-                       }
-                      else{
-                        new_global_array[index].paused; 
 
+                           var object = [];
+
+
+                           for (var index=0; index <(JSON.parse(sessionStorage.getItem(test)).length); index++ ) {
+                           
+                       	   // object.push((JSON.parse(sessionStorage.getItem('newbuttonId'))[index]));    
+                       	   // object.push((JSON.parse(sessionStorage.getItem(test))[0]));     // assigning the object in the session storagge to thes new temp object 
+ 						  
+                       	   		object.push((JSON.parse(sessionStorage.getItem(test))[index]));
+
+
+ 					}
+
+ 					console.log(object,"this is the object in the paypause method  "); 
+
+
+
+                            for (var index =0; index < object.length; index++){
+                            
+                            if(object[index].paused){
+
+                            	object[index].play(); 
+
+                            }
+                            else{
+ 								object[index].pause();
+
+                            }
+
+
+            
                       }
 
-
                   }
-              }
+
+ /*
+   
+                            for (var index =0; index < object.length; index++){
+                            
+                            if(object[index].paused){
+                             console.log(object[index], "its suppose to play?"); 
+
+                            object[index].play("this is where the error is");
+                            }
+                            else{
+ 								console.log()
+
+                            }
+
+
+                           
+ 						   
+ 						   		}	  
+                       	   
+							 */
+                            
+
+
+
+
+    /*
+                           // testing the newbuttonid in every anime index in the session storage 
                        
-  
+                           for (var index=0; index < sessionStorage.length; index++){
+
+
+
+            						// check  the last elemets(id-value)on every object in the session_storage
+                                 if (sessionStorage[index][sessionStorage[index].length - 1] === newbuttonId){
+
+                                   console.log("found the button that has been clicked. It is in "+ newbuttonId + "on lacation "+sessionStorage[index][sessionStorage.length - 1]  ); 
+                                   
+                                   
+                                   // if object is found with the correct id then interate through every audio/file element within the object/array and check to turn it off or on
+                                   for (var i=0; sessionStorage[index][i] < sessionStorage[index][sessionStorage[index].length - 2]; i++){ 
+
+
+                                   if (sessionStorage[index][i].paused){
+                                     
+                                      sessionStorage[index][i].play(); 
+                                   }
+
+                                   else{
+
+                                   	sessionStorage[index][i].pause(); 
+                                   }
+
+                                   }
+
+
+                                 }
+
+                           }
+     */
+                       
+                   
+
+
+                       
+                      /*
+              
+                       function test(){
+
+                       	array = [25,34,24,09]; 
+
+                       	sessionStorage.setItem('key',JSON.stringify(array)); 
+                       	console.log(JSON.parse(sessionStorage.getItem('key'))); 
+                        var object = [];
+ 					    for (var index=0; index < 4; index++){
+
+                       	object.push((JSON.parse(sessionStorage.getItem('key'))[index])); 
+                       	
+
+						}
+
+                       }
+                      */
 
                        
                        
@@ -338,11 +466,6 @@ functionalities */
 
 
            
-                     //playingAudio = function(NEWARRAY){
-						//for (var i=0; i < NEWARRAY.length; i++){
-						//	NEWARRAY[i]
-                    // }
-
 
                   
 
