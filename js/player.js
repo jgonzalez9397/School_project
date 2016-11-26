@@ -37,9 +37,17 @@ functionalities */
 			const audioButton55 = new Audio("music/audio/audioButton55.wav");
 			const audioButton56 = new Audio("music/audio/audioButton56.wav");
 
+			// array stores all the audio objects to be compared with object-local variable
+			var Global_Audio_Array = [audioButton11,audioButton12,audioButton13,audioButton14,
+			audioButton15,audioButton16,audioButton21,audioButton22,audioButton23,audioButton24,
+			audioButton25,audioButton26,audioButton31,audioButton32,audioButton33,audioButton34, 
+			audioButton35,audioButton36,audioButton41,audioButton42,audioButton43,audioButton44,
+			audioButton45,audioButton46,audioButton51, audioButton52,audioButton53,audioButton54,
+			audioButton55,audioButton56 ]; 
+
 
               
-// global log counter variable 
+             // global log counter variable 
               var logCounter = 0; 
 
               var ButtonsPlaying = [];    // array that stores playing audio objects / global variable 
@@ -246,7 +254,7 @@ functionalities */
 
                      test = "newbutton"+logCounter; 
 
-                     playButton.setAttribute("id", test);     // this is another test
+                     playButton.setAttribute("id", test);     // adding a string to the  attribute
 
 
                      console.log(test, "testing if its a another string ");
@@ -296,7 +304,7 @@ functionalities */
 
                             
 							
-							sessionStorage.setItem(test,JSON.stringify(loggedButtons)); 
+							sessionStorage.setItem(test,JSON.stringify(loggedButtons));     // adding the loggedbutton copy to the sessionStorage
                            //console.log(JSON.parse(sessionStorage.getItem(newbuttonId)));
                            
                            
@@ -319,52 +327,89 @@ functionalities */
       					
 
 
-                        function pauseplay(test){
+                        function pauseplay(test){                // test is the ID of the logged that been clicked
 
                      
-                     console.log("this is the newbutton test", test );
+                        console.log("this is the newbutton test", test );
                         
-            console.log(JSON.parse(sessionStorage.getItem(test)), "testing sesstionstorage in the pauseplay method ");  
+                        console.log(JSON.parse(sessionStorage.getItem(test)), "testing sesstionstorage in the pauseplay method ");   
                       
 
 
 
-                           var object = [];
+                        var object = [];
 
 
-                           for (var index=0; index <(JSON.parse(sessionStorage.getItem(test)).length); index++ ) {
+                        for (var index=0; index <(JSON.parse(sessionStorage.getItem(test)).length); index++ ) {     
                            
                        	   // object.push((JSON.parse(sessionStorage.getItem('newbuttonId'))[index]));    
-                       	   // object.push((JSON.parse(sessionStorage.getItem(test))[0]));     // assigning the object in the session storagge to thes new temp object 
+                       	   // object.push((JSON.parse(sessionStorage.getItem(test))[0]));    
  						  
-                       	   		object.push((JSON.parse(sessionStorage.getItem(test))[index]));
+                       	object.push((JSON.parse(sessionStorage.getItem(test))[index]));     	 // assigning the object in the session storagge to thes new temp object array 
 
 
  					}
 
- 					console.log(object,"this is the object in the paypause method  "); 
+ 					    console.log(object,"this is the object in the pausePlay method  "); 
+
+                         
 
 
+                            for (var i =0; i < object.length; i++){
 
-                            for (var index =0; index < object.length; index++){
-                            
-                            if(object[index].paused){
+                            for (var x=0; x < Global_Audio_Array.length; x++){
 
-                            	object[index].play(); 
+                               
+                            	if (object[i].src === Global_Audio_Array[x].src){
+
+                            			console.log(object[i]+ "and global "+ Global_Audio_Array[x]+ "are the same"); 
+
+
+                                if(Global_Audio_Array[x].paused){
+
+                                   Global_Audio_Array[x].play(); 
 
                             }
-                            else{
- 								object[index].pause();
+
+                        else  {
+ 								Global_Audio_Array[x].pause();
 
                             }
 
+
+
+
+
+                            	}
+
+                            	else{
+
+                            		console.log("not a match..next"); 
+                            	}
+                            }
+                        }
+
+
+                        
+/*
+
+                   if (object[0].src === Global_Audio_Array[0].src){
+
+                   	console.log("true ")
+                   }
+                   else {
+                   	console.log("false")
+                   }
 
             
-                      }
+ */                     
+
 
                   }
 
- /*
+
+
+ /*  
    
                             for (var index =0; index < object.length; index++){
                             
