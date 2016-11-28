@@ -52,13 +52,18 @@ functionalities */
 
               var ButtonsPlaying = [];    // array that stores playing audio objects / global variable 
 
-              
+              var testingID = []; 
 
             //this id is passed as an argument to the playpause method to test later on. 
 			function playPause(buttonID){
 
+
+
+
                     // this id is get access to the dom elements that contains the id
 					var property = document.getElementById(buttonID);  
+					
+					
 					var button; 
 					var color;             
                     
@@ -202,7 +207,7 @@ functionalities */
 						property.style.backgroundColor = color;
 						property.style.borderRadius = "250px";
 						ButtonsPlaying.push(button); 
-
+                        testingID.push(property) ;   // !!!!!!!!!!!!!!!!!!!
 
 					}
 					else {
@@ -214,7 +219,11 @@ functionalities */
 						for (var i=0; i < ButtonsPlaying.length; i++){
                          
                          if (ButtonsPlaying[i].paused){
+                         	
                          	ButtonsPlaying.splice(i,1); 
+
+                         	testingID.splice(i, 1);   //!!!!!!!!!!!!!!!!!!!!!
+
                          }
 
 					}
@@ -222,6 +231,7 @@ functionalities */
                        }
               
                     console.log(ButtonsPlaying.length); 
+                    console.log( testingID);  	//!!!!!!!!!!!!!!!!!!!!!
               
 
 				}
@@ -309,10 +319,49 @@ functionalities */
                            
                            
                            
-                          
+              
 
-                          console.log(loggedButtons, "this the copy after it gets stringify");     
-                          console.log(JSON.parse(sessionStorage.getItem(test)), "testing sesstionstorage in the hello method ");      
+                          // this is where all the buttons that have been clicked get turned off for the next log
+
+	                          
+
+
+
+                        for (var num=0;  num <ButtonsPlaying.length; num++){
+
+                            
+
+
+
+                        	if (!ButtonsPlaying[num].paused){
+
+
+                        		console.log("what what what !!!!!!!!! ");
+
+
+                        	   // ButtonsPlaying.splice(num,1);
+
+
+                        		ButtonsPlaying[num].pause(); 
+                                testingID[num].style.backgroundColor = "rgba(80,80,80,0.7)";
+						        testingID[num].style.borderRadius = "0px";
+                        		
+
+
+						     
+
+
+
+                        	}
+
+
+
+                        }
+
+                      
+                     
+
+
 
                           console.log("value of ID is : "+ test); 
 
@@ -350,29 +399,26 @@ functionalities */
 
  					}
 
- 					    console.log(object,"this is the object in the pausePlay method  "); 
 
                          
-
-
-                            for (var i =0; i < object.length; i++){
+                            for (var i =0; i < object.length; i++){          // comparing 
 
                             for (var x=0; x < Global_Audio_Array.length; x++){
 
                                
-                            	if (object[i].src === Global_Audio_Array[x].src){
+                            if (object[i].src === Global_Audio_Array[x].src){
 
-                            			console.log(object[i]+ "and global "+ Global_Audio_Array[x]+ "are the same"); 
+                            console.log(object[i]+ "and global "+ Global_Audio_Array[x]+ "are the same"); 
 
 
-                                if(Global_Audio_Array[x].paused){
+                            if(Global_Audio_Array[x].paused){
 
                                    Global_Audio_Array[x].play(); 
 
                             }
 
-                        else  {
- 								Global_Audio_Array[x].pause();
+                             else  {
+ 							Global_Audio_Array[x].pause();
 
                             }
 
@@ -380,11 +426,12 @@ functionalities */
 
 
 
-                            	}
+                            }
 
-                            	else{
+                            else{
 
-                            		console.log("not a match..next"); 
+                            console.log("not a match..next"); 
+                            	
                             	}
                             }
                         }
