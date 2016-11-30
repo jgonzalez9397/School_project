@@ -327,7 +327,7 @@ functionalities */
 
 
 
-                        for (var num=0;  num <ButtonsPlaying.length; num++){
+                        for (var num=0;  num < ButtonsPlaying.length  ; num++){
 
                             
 
@@ -339,25 +339,28 @@ functionalities */
                         		console.log("what what what !!!!!!!!! ");
 
 
-                        	   // ButtonsPlaying.splice(num,1);
+                        	         testingID[num].style.backgroundColor = "rgba(80,80,80,0.7)";
+						             testingID[num].style.borderRadius = "0px";
+
+									 ButtonsPlaying[num].pause(); 
+
+									console.log("what is the size of this fucking array :"+ButtonsPlaying.length);
 
 
-                        		ButtonsPlaying[num].pause(); 
-                                testingID[num].style.backgroundColor = "rgba(80,80,80,0.7)";
-						        testingID[num].style.borderRadius = "0px";
+
                         		
-
-
-						     
-
-
-
                         	}
 
 
 
                         }
 
+                        for (var x = 0; x < ButtonsPlaying.length; x++ ){
+
+                         ButtonsPlaying.splice(num ,1); 
+
+                        }
+ 
                       
                      
 
