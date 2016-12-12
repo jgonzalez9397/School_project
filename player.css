@@ -1,3 +1,5 @@
+
+
 body {
 	 
     border:2px double red;
@@ -12,7 +14,7 @@ body {
 
 
 }
-/* */
+/* Stying for the main div that conatains all audio-boxes */
 .main {
 	width: 960px;
 	height: 300px;
@@ -21,6 +23,7 @@ body {
 	border:2px solid white;
 }
 
+/* .box class applies to all audio-boxes within the .main div */
 .box {
     width:70px;
     height:70px;
@@ -36,10 +39,10 @@ rgr.box:hover {
 	    background-color: rgba(150,150,150,0.9);
 }
 
-
+/* Stying for the LOGGED AUDIO button */
 .test2 {
    	    margin-left: 425px;
-        width:100px;
+        width:110px;
     	border:3px solid #930000;
     	background: #930000;
     	color: white;
@@ -51,10 +54,13 @@ rgr.box:hover {
 	    border:3px solid red;
     	background: red;
     	color: white;
-        font-size: 13px;
+        
 }
 
-/* information of the object */ 
+.test2:focus {outline:0;   opacity: 0.6; font-size: 14px;}
+
+
+/* connecting the css style block with the " feedback " node object in the js file */ 
 .loggingStyle{
         margin:0 auto;
     	text-align: center;
@@ -64,41 +70,58 @@ rgr.box:hover {
 		color: white;
 }
 
-/* styling for the replay button */ 
+/* connecting the css style block with the " playbutton " node object in the js file */ 
 .testbuton{
         border:none;
         height: 27px;
 		float: right;
-		width:100px;
+		width:65px;
 		background: #A0BFFF;
 		margin:none;
 		border-radius: 100px;
 		color:white;
 		box-shadow: 5px 0px 5px 0px gray;
+        outline:0;
 }
 
 .testbuton:focus{
-	 width:60px;
-     font-size:12px;
-     background:#A0BFFF;
-
-
-
+     
+     width:50px;
 
 }
 
+/*styling for the buttombox */ 
 
 .bottombox{
 		width: 780px;
 		height: 200px;
 		border:2px solid white;
 		margin: 0px auto;
-		/*This is the black line underneath the Logging Audio button*/
+		/*This is the white line underneath the Logging Audio button*/
 		border-top: 3px solid white;
 		border-right: none; 
 				border-left: none; 
 				border-bottom: none;
 
+}
+
+/*styling for the REFRESH button */ 
+.refresh {
+	border: none;
+	background: #13199D;
+	box-shadow: 5px 0px 5px 0px gray;
+	color: white;
+	font-size: 12px;
+}
+
+.refresh:focus {outline:0; opacity: 0.6;}   
+
+.refresh:hover { background:#1E28FF;  font-size: 14px;}\
+
+.color{
+
+background:red ;
+		 
 }
 
 

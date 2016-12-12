@@ -1,7 +1,7 @@
-/* this is the player javascript file.It will handle sound loops 
+/* This is the player javascript file. It will handle audio-file,storage, and playback 
 functionalities */
 
-	
+	         // list of all the audio files in my local computer
 			const audioButton11 = new Audio("music/audio/audiobutton11.wav");
 			const audioButton12 = new Audio("music/audio/audioButton12.wav");
 			const audioButton13 = new Audio("music/audio/audioButton13.wav");
@@ -43,7 +43,7 @@ functionalities */
 			audioButton25,audioButton26,audioButton31,audioButton32,audioButton33,audioButton34, 
 			audioButton35,audioButton36,audioButton41,audioButton42,audioButton43,audioButton44,
 			audioButton45,audioButton46,audioButton51, audioButton52,audioButton53,audioButton54,
-			audioButton55,audioButton56 ]; 
+			audioButton55,audioButton56]; 
 
 
               
@@ -54,17 +54,18 @@ functionalities */
 
               var testingID = []; 
 
-            //this id is passed as an argument to the playpause method to test later on. 
-			function playPause(buttonID){
+              // ButtonID is the value passed by the node when clicked 
+			  function playPause(buttonID){
 
 
 
 
-                    // this id is get access to the dom elements that contains the id
+                    // gets access to the node in the dom to alter its css styling 
 					var property = document.getElementById(buttonID);  
 					
-					
+					//contains the current audio-file of the audio-box clicked
 					var button; 
+					//contains the css styling color of the audio-box clicked
 					var color;             
                     
 
@@ -206,8 +207,8 @@ functionalities */
 						button.loop = true;                 // audio object is playing in a loop
 						property.style.backgroundColor = color;
 						property.style.borderRadius = "250px";
-						ButtonsPlaying.push(button); 
-                        testingID.push(property) ;   // !!!!!!!!!!!!!!!!!!!
+						ButtonsPlaying.push(button);        // pushing the audio object into the ButtonsPlaying(global array)
+                        testingID.push(property) ;          // pushing the id of the same audio object into another testingID(another global variale)
 
 					}
 					else {
@@ -218,60 +219,54 @@ functionalities */
 						// traverses through the array to remove paused objects 
 						for (var i=0; i < ButtonsPlaying.length; i++){
                          
-                         if (ButtonsPlaying[i].paused){
+                        if (ButtonsPlaying[i].paused){
                          	
-                         	ButtonsPlaying.splice(i,1); 
+                         	ButtonsPlaying.splice(i,1);    // removes the audio object into the ButtonsPlaying(global array)
 
-                         	testingID.splice(i, 1);   //!!!!!!!!!!!!!!!!!!!!!
 
-                         }
+                         	testingID.splice(i, 1);        // removes the id of the same audio object into another testingID(another global variale)
 
-					}
-                        
-                       }
-              
+                                }
+					        }
+                        }
                     console.log(ButtonsPlaying.length); 
                     console.log( testingID);  	//!!!!!!!!!!!!!!!!!!!!!
-              
-
-				}
+              }
 
                  
-                    
-
-
                     var test;    //running total
+                    function log(){
 
-           function log(){
-           	           
-           	        logCounter++; 
+                    	
+          	        logCounter++; 
                     
                     console.log("this the end of the session" + ButtonsPlaying.length );
-                    var newElement = document.createElement("p"); 
+
+                    var feedback = document.createElement("p"); 
                     
                     var playButton= document.createElement("button"); //test  create the element
 
-                    newElement.innerText = "Logging Button" + " "+ logCounter+ "  has "+ ButtonsPlaying.length +" objects";   // confirmation of how many audio objects are playing
+                    feedback.innerText = "Logging Button" + " "+ logCounter+ "  has "+ ButtonsPlaying.length +" objects";   // confirmation of how many audio objects are playing
+                     
 
-                    playButton.innerText = "log"+ logCounter;  // test
+
+                    playButton.innerText = "log"+ logCounter;   
+                    
 
 
-                     newElement.className = "loggingStyle"; 
-                     playButton.className = "testbuton";   // test
-                    // playButton.id = "newbutton"+logCounter;     // id value is not being passed by to the pauseplay function
+                    feedback.className = "loggingStyle";  // connecting the " feedback " node object with css styling 
+                    playButton.className = "testbuton";   // connecting the " playButton " node object with css styling
+                 
                    
+                     test = "newbutton"+logCounter;           // adding the new ID number as string to the test variable 
+
+                     playButton.setAttribute("id", test);     // adding a ID string to the  new "playButton"
 
 
-                     test = "newbutton"+logCounter; 
-
-                     playButton.setAttribute("id", test);     // adding a string to the  attribute
-
-
-                     console.log(test, "testing if its a another string ");
-
-
-                      console.log(playButton.id, "this is the log string fuck!!!"); // this is good 
-                      playButton.onclick =  function() { pauseplay(this.id); };   // playbutton fires only when clicked
+                     console.log(test, " testing if its a another string ");
+                     console.log(playButton.id, "this is the log string fuck!!!"); // this is good 
+                     
+                     playButton.onclick =  function() { pauseplay(this.id); };   // playbutton fires only when clicked
 
 
 
@@ -281,159 +276,113 @@ functionalities */
 
                      var destinationNode = document.getElementsByTagName('div')[2]; //test- pick the destination parent node/tag
 
-                         destinationNode.appendChild(newElement);      // test
+                         destinationNode.appendChild(feedback);      // test
 
 
                             
 
+                          hello();
 
-
-
-
-                        hello(test);
-
-
-
-
-             			function hello() {
-  								
-
-
-
-
-                          var loggedButtons = [];                 //create a new array that stores audio combination
-
-                          for(var x=0; x < ButtonsPlaying.length; x++){
-
-                          loggedButtons[x] = jQuery.extend(true, {}, ButtonsPlaying[x]); // using jqury for deep copy
-  
-                         
-                            }
-                          console.log(loggedButtons, "this the copy");     
-                          console.log(ButtonsPlaying, "this the global");     
-
-                            
-							
-							sessionStorage.setItem(test,JSON.stringify(loggedButtons));     // adding the loggedbutton copy to the sessionStorage
-                           //console.log(JSON.parse(sessionStorage.getItem(newbuttonId)));
-                           
-                           
-                           
-              
-
-                          // this is where all the buttons that have been clicked get turned off for the next log
-
-	                          
-
-
-
-                        for (var num=0;  num < ButtonsPlaying.length  ; num++){
-
-                            
-
-
-
-                        	if (!ButtonsPlaying[num].paused){
-
-
-                        		console.log("what what what !!!!!!!!! ");
-
-
-                        	         testingID[num].style.backgroundColor = "rgba(80,80,80,0.7)";
-						             testingID[num].style.borderRadius = "0px";
-
-									 ButtonsPlaying[num].pause(); 
-
-									console.log("what is the size of this fucking array :"+ButtonsPlaying.length);
-
-
-
-                        		
-                        	}
-
-
-
-                        }
-
-                        for (var x = 0; x < ButtonsPlaying.length; x++ ){
-
-                         ButtonsPlaying.splice(num ,1); 
-
-                        }
- 
-                      
-                     
-
-
-
-                          console.log("value of ID is : "+ test); 
-
-
-													} 
-												}
-
-
-							
-
-
-      					
-
-
-                        function pauseplay(test){                // test is the ID of the logged that been clicked
-
-                     
-                        console.log("this is the newbutton test", test );
+               			function hello() {
                         
-                        console.log(JSON.parse(sessionStorage.getItem(test)), "testing sesstionstorage in the pauseplay method ");   
-                      
+                        //create a new array that stores audio combination
+  					    var loggedButtons = [];                 
 
+                           for(var x=0; x < ButtonsPlaying.length; x++){
 
+                                 // using jqury for deep copy of the Temp array
+                                 loggedButtons[x] = jQuery.extend(true, {}, ButtonsPlaying[x]); 
+  
+                          }
+                         // meant to test if a deep copy did occure and both objects are referencing the same address
+                        console.log(loggedButtons, "this the copy");     
+                        console.log(ButtonsPlaying, "this the global");     
 
-                        var object = [];
-
-
-                        for (var index=0; index <(JSON.parse(sessionStorage.getItem(test)).length); index++ ) {     
+                            
+					    // the copy of the Temp array is now permatently stored in a sessionStorage
+						sessionStorage.setItem(test,JSON.stringify(loggedButtons));     
                            
-                       	   // object.push((JSON.parse(sessionStorage.getItem('newbuttonId'))[index]));    
-                       	   // object.push((JSON.parse(sessionStorage.getItem(test))[0]));    
- 						  
-                       	object.push((JSON.parse(sessionStorage.getItem(test))[index]));     	 // assigning the object in the session storagge to thes new temp object array 
+                           
+             		            } 
+							}
 
+
+                       function refresh(){
+
+
+               	               // this is where all the buttons that have been clicked get turned off for the next log
+                            for (var num=0;  num < ButtonsPlaying.length; num++){
+
+                    		     console.log("Turn off all button after after the refresh button is clicked ");
+ 	                                   
+                        	         
+     									 if (!(ButtonsPlaying[num].paused)){
+
+            						     testingID[num].style.backgroundColor = "rgba(80,80,80,0.7)";
+						                 testingID[num].style.borderRadius = "0px";
+									 
+									 	 ButtonsPlaying[num].pause();
+									 	 ButtonsPlaying.splice(num,1); 
+									 	 testingID.splice(num,1); 
+									 	 
+									 	 // index next index gets skipped somewhere aroud this part of the code
+
+									 	 num -= 1;      // every other index was getting skipped so this line moves to the previous index
+
+									 						
+								         }
+								        
+								     }
+
+							 console.log("what is the size of this array :"+ ButtonsPlaying.length);
+                   	
+                              }
+
+                       
+
+
+
+						 // test is the ID of the logg button that been clicked
+	                    function pauseplay(test){                      				
+
+                        		var object = [];
+
+                                // first looks for an session storage objects that has the test/id then traverses though every index determined by length 
+                                for (var index=0; index <(JSON.parse(sessionStorage.getItem(test)).length); index++ ) {     
+                           
+   								// assigning the object in the session storage to the new temp object array called "Object".Passed by value. 
+                    			object.push((JSON.parse(sessionStorage.getItem(test))[index]));     	
 
  					}
 
-
-                         
-                            for (var i =0; i < object.length; i++){          // comparing 
-
-                            for (var x=0; x < Global_Audio_Array.length; x++){
-
-                               
-                            if (object[i].src === Global_Audio_Array[x].src){
-
-                            console.log(object[i]+ "and global "+ Global_Audio_Array[x]+ "are the same"); 
+                          /* searches and compares every index in a Copy Session Storage(Object) with the "Global_Audio_Array(global)" 
+                           until the correct audio files are played or paused */
+                           for (var i =0; i < object.length; i++){          
+                                  
+                                  for (var x=0; x < Global_Audio_Array.length; x++){
 
 
-                            if(Global_Audio_Array[x].paused){
+                                      if (object[i].src === Global_Audio_Array[x].src){
 
-                                   Global_Audio_Array[x].play(); 
+                                             console.log(object[i]+ "and global "+ Global_Audio_Array[x]+ "are the same"); 
+                                               if(Global_Audio_Array[x].paused){
 
-                            }
+                                                Global_Audio_Array[x].play(); 
+                                                var variable = Global_Audio_Array[x].id;
+                                                console.log(variable);
 
-                             else  {
- 							Global_Audio_Array[x].pause();
+                                                }
 
-                            }
+                                              else  {
+ 							                  Global_Audio_Array[x].pause();
 
+                                             }
 
+                                        }
 
+                                      else{
 
-
-                            }
-
-                            else{
-
-                            console.log("not a match..next"); 
+                                         console.log("not a match..next"); 
                             	
                             	}
                             }
@@ -441,114 +390,11 @@ functionalities */
 
 
                         
-/*
-
-                   if (object[0].src === Global_Audio_Array[0].src){
-
-                   	console.log("true ")
-                   }
-                   else {
-                   	console.log("false")
-                   }
-
-            
- */                     
+                    
 
 
                   }
-
-
-
- /*  
-   
-                            for (var index =0; index < object.length; index++){
-                            
-                            if(object[index].paused){
-                             console.log(object[index], "its suppose to play?"); 
-
-                            object[index].play("this is where the error is");
-                            }
-                            else{
- 								console.log()
-
-                            }
-
-
-                           
- 						   
- 						   		}	  
-                       	   
-							 */
-                            
-
-
-
-
-    /*
-                           // testing the newbuttonid in every anime index in the session storage 
-                       
-                           for (var index=0; index < sessionStorage.length; index++){
-
-
-
-            						// check  the last elemets(id-value)on every object in the session_storage
-                                 if (sessionStorage[index][sessionStorage[index].length - 1] === newbuttonId){
-
-                                   console.log("found the button that has been clicked. It is in "+ newbuttonId + "on lacation "+sessionStorage[index][sessionStorage.length - 1]  ); 
-                                   
-                                   
-                                   // if object is found with the correct id then interate through every audio/file element within the object/array and check to turn it off or on
-                                   for (var i=0; sessionStorage[index][i] < sessionStorage[index][sessionStorage[index].length - 2]; i++){ 
-
-
-                                   if (sessionStorage[index][i].paused){
-                                     
-                                      sessionStorage[index][i].play(); 
-                                   }
-
-                                   else{
-
-                                   	sessionStorage[index][i].pause(); 
-                                   }
-
-                                   }
-
-
-                                 }
-
-                           }
-     */
-                       
-                   
-
-
-                       
-                      /*
-              
-                       function test(){
-
-                       	array = [25,34,24,09]; 
-
-                       	sessionStorage.setItem('key',JSON.stringify(array)); 
-                       	console.log(JSON.parse(sessionStorage.getItem('key'))); 
-                        var object = [];
- 					    for (var index=0; index < 4; index++){
-
-                       	object.push((JSON.parse(sessionStorage.getItem('key'))[index])); 
-                       	
-
-						}
-
-                       }
-                      */
-
-                       
-                       
-                      
-
-                 
-
-
+           
 
 
 

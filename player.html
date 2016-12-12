@@ -2,15 +2,17 @@
 <html>
 <head>
 	<title>Jonathan's Project</title>
+    <!--importing the CSS file for styling -->
 	<link rel="stylesheet" type="text/css" href="player.css">
 
 
 </head>
 
 <body>
-        <div class="topbox"></div>
-      
-
+       <!--this is the div above the audio boxes -->
+       <div class="topbox"></div>                                                               
+             
+        <!--this "main div" is the div that contains audio-box 11-56 -->
         <div class = "main">
             <button class = "box" id = "button11" onclick = "playPause(this.id);"></button>
             <button class = "box" id = "button12" onclick = "playPause(this.id);"></button>
@@ -43,15 +45,17 @@
             <button class = "box" id = "button55" onclick = "playPause(this.id);"></button>
             <button class = "box" id = "button56" onclick = "playPause(this.id);"></button>
 
-            <!-- button that logs all the info -->
-               <button class="test2" onclick="log();">LOGG AUDIO </button>
+            <!-- Will create a feeback paragraph(shows the user which audio-boxes have been clicked) and also create a new Button that stores those audio files in a "SESSION STORAGE" object for later playback -->
+               <button class="test2" onclick="log();">LOGG AUDIO </button>   
+            <!--the Refresh button removes all audio files in the "TEMPORAY STORAGE " after it has already been logged -->
+               <button class="refresh" onclick="refresh();"> REFRESH</button> 
         </div> 
 
          
 
 
-
-          <div class="bottombox">
+         <!--this is the div above the audio boxes -->
+         <div class="bottombox">
 
                 
           </div>
@@ -60,9 +64,9 @@
        
         
       
-
-
+<!--importing the javascript library -->
 <script type="text/javascript" src="js/jquery.js"></script>
+<!--importing the Javascript file -->
 <script type="text/javascript" src="js/player.js"></script>
 
     </body> 
