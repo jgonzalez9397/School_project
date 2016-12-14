@@ -1,6 +1,8 @@
 /* This is the player javascript file. It will handle audio-file,storage, and playback 
 functionalities */
 
+
+
 	         // list of all the audio files in my local computer
 			const audioButton11 = new Audio("music/audio/audiobutton11.wav");
 			const audioButton12 = new Audio("music/audio/audioButton12.wav");
@@ -216,7 +218,7 @@ functionalities */
 						property.style.backgroundColor = "rgba(80,80,80,0.7)";
 						property.style.borderRadius = "0px";
 
-						// traverses through the array to remove paused objects 
+						// traverses through the global ButtonsPlaying array to remove paused objects 
 						for (var i=0; i < ButtonsPlaying.length; i++){
                          
                         if (ButtonsPlaying[i].paused){
@@ -235,7 +237,36 @@ functionalities */
 
                  
                     var test;    //running total
-                    function log(){
+                  
+
+                 function log(){
+
+      				    myFunction();   // calling function 
+
+      				    /*function is responsible for creating a "snackbar" to inform the user to
+      				     click the refesh button after logging the audio files */
+   					    function myFunction() {
+   							// Get the snackbar DIV
+    						var x = document.getElementById("snackbar")
+
+
+						if (ButtonsPlaying.length > 0 ){
+ 
+ 							x.innerText = "Great! Now Click Refresh!";  
+ 								x.className = "show";
+ 								     x.style.backgroundColor = "blue";  
+ 								 }
+
+						else {
+	 					x.innerText = "sorry try again" ;  // confirmation of how many audio objects are playing
+   						 // Add the "show" class to DIV
+    				    x.className = "show";
+     					x.style.backgroundColor = "red";
+						}
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
 
                     	
           	        logCounter++; 
@@ -246,15 +277,35 @@ functionalities */
                     
                     var playButton= document.createElement("button"); //test  create the element
 
-                    feedback.innerText = "Logging Button" + " "+ logCounter+ "  has "+ ButtonsPlaying.length +" objects";   // confirmation of how many audio objects are playing
-                     
+                    
+
+                    if (ButtonsPlaying.length === 0 ){
+
+                    feedback.innerText = "ERROR NO AUDIO FILES "   // confirmation of how many audio objects are playing
+                    
+                    feedback.className = "NologgedFiles"; 
+                    playButton.style.opacity = 0.4;   // connecting the " playButton " node object with css styling
+
+                     }
+                     else{
+
+                     // confirmation of how many audio objects are playing
+                    feedback.innerText =  ButtonsPlaying.length + " audio files ready for playback";   
+                    
+                    // connecting the " feedback " node object with css styling 
+                    feedback.className = "loggingStyle";  
 
 
-                    playButton.innerText = "log"+ logCounter;   
+                     }
+
+
+
+
+
+                    playButton.innerText = "Log " +logCounter;   
                     
 
 
-                    feedback.className = "loggingStyle";  // connecting the " feedback " node object with css styling 
                     playButton.className = "testbuton";   // connecting the " playButton " node object with css styling
                  
                    
@@ -357,10 +408,14 @@ functionalities */
 
                           /* searches and compares every index in a Copy Session Storage(Object) with the "Global_Audio_Array(global)" 
                            until the correct audio files are played or paused */
-                           for (var i =0; i < object.length; i++){          
+                           for (var i =0; i < object.length; i++){     
+
+                              
                                   
                                   for (var x=0; x < Global_Audio_Array.length; x++){
+                                              
 
+                                              
 
                                       if (object[i].src === Global_Audio_Array[x].src){
 
@@ -371,12 +426,17 @@ functionalities */
                                                 var variable = Global_Audio_Array[x].id;
                                                 console.log(variable);
 
+               									
+
+
                                                 }
 
                                               else  {
  							                  Global_Audio_Array[x].pause();
 
+
                                              }
+                                              
 
                                         }
 
@@ -387,26 +447,20 @@ functionalities */
                             	}
                             }
                         }
-
-
-                        
-                    
-
-
-                  }
+               }
            
 
 
 
-                        
-                    
-
-                  
-                
+   
 
 
 
-           
+
+
+
+
+
 
                   
 

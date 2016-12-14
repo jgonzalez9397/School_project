@@ -7,16 +7,17 @@ body {
 }
 
 .topbox{
-	width: 960px;
+	width: 100%;
 	height: 200px;
 	border:2px solid white;
 	margin: 0 auto;
+	padding: 
 
 
 }
 /* Stying for the main div that conatains all audio-boxes */
 .main {
-	width: 960px;
+	width: 1000px;
 	height: 300px;
 	margin: 0 auto;
 	
@@ -25,8 +26,8 @@ body {
 
 /* .box class applies to all audio-boxes within the .main div */
 .box {
-    width:70px;
-    height:70px;
+    width:80px;
+    height:80px;
 	float: left;
 	border:none;
 	margin: 5px;
@@ -64,10 +65,10 @@ rgr.box:hover {
 .loggingStyle{
         margin:0 auto;
     	text-align: center;
-   		width:730px;
 		padding:5px;
 		background: rgba(150,150,150,0.9);
 		color: white;
+		width:400px;
 }
 
 /* connecting the css style block with the " playbutton " node object in the js file */ 
@@ -75,19 +76,20 @@ rgr.box:hover {
         border:none;
         height: 27px;
 		float: right;
-		width:65px;
-		background: #A0BFFF;
+		width: 70px;
+		background: blue;
 		margin:none;
-		border-radius: 100px;
 		color:white;
 		box-shadow: 5px 0px 5px 0px gray;
         outline:0;
+        font-size: 11px;
+
 }
 
-.testbuton:focus{
+.testbuton:active{
      
-     width:50px;
-
+     font-size: 12px;
+     width:65px;
 }
 
 /*styling for the buttombox */ 
@@ -122,6 +124,164 @@ rgr.box:hover {
 
 background:red ;
 		 
+}
+
+
+
+
+
+
+
+/*stying for the navigation bar ---------------------*/
+ul {
+    list-style-type: none;
+    margin-bottom: 20px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: blue;
+}
+.active {
+    background-color: #4CAF50;
+}
+
+ul {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+
+.NologgedFiles{
+          margin:0 auto;
+    	text-align: center;
+   		width:400px;
+		padding:5px;
+	    background :red;
+        color: white;
+        opacity:0.8;
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Demo specific*/
+body {
+  margin: 1em;
+  font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+}
+
+h2 {
+  color: #ccc;
+}
+
+h4 {
+  margin: 4px;
+  padding: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: blue; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+    box-shadow:  7px 0px 10px 0px gray;
+    border-radius: 250px;
+}
+
+
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }
 
 
