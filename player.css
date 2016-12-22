@@ -1,15 +1,15 @@
 
 
 body {
-	 
-    border:2px double red;
-    background: rgba(150,150,150,0.9);
+   /* border:2px solid red; */
+
+   background: #333;
 }
 
 .topbox{
 	width: 100%;
 	height: 200px;
-	border:2px solid white;
+   /* border:2px solid white; */
 	margin: 0 auto;
 	padding: 
 
@@ -18,16 +18,17 @@ body {
 /* Stying for the main div that conatains all audio-boxes */
 .main {
 	width: 1000px;
-	height: 300px;
+	height: 335px;
 	margin: 0 auto;
+    margin-top: -80px
 	
-	border:2px solid white;
+	/* border:2px solid white; */
 }
 
 /* .box class applies to all audio-boxes within the .main div */
 .box {
-    width:80px;
-    height:80px;
+    width:90px;
+    height:90px;
 	float: left;
 	border:none;
 	margin: 5px;
@@ -48,7 +49,8 @@ rgr.box:hover {
     	background: #930000;
     	color: white;
     	font-size: 12px;
-    	box-shadow: 7px 0px 10px 0px gray; 
+            box-shadow: 3px 2px 3px 0px gray;
+
 }
 
 .test2:hover{
@@ -76,7 +78,7 @@ rgr.box:hover {
         border:none;
         height: 27px;
 		float: right;
-		width: 70px;
+		width: 60px;
 		background: blue;
 		margin:none;
 		color:white;
@@ -88,8 +90,8 @@ rgr.box:hover {
 
 .testbuton:active{
      
-     font-size: 12px;
-     width:65px;
+     font-size: 13px;
+     width:70px;
 }
 
 /*styling for the buttombox */ 
@@ -111,14 +113,18 @@ rgr.box:hover {
 .refresh {
 	border: none;
 	background: #13199D;
-	box-shadow: 5px 0px 5px 0px gray;
+	box-shadow: 3px 2px 3px 0px gray;
 	color: white;
 	font-size: 12px;
 }
 
-.refresh:focus {outline:0; opacity: 0.6;}   
+.refresh:focus {outline:0;   opacity: 0.6; font-size: 14px;}   
 
-.refresh:hover { background:#1E28FF;  font-size: 14px;}\
+.refresh:hover { 
+ 
+        background: #1E28FF;
+        font-size: 14px
+        color: white;}
 
 .color{
 
@@ -139,7 +145,8 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #4C4C4C;  /* determine the color of the nav bar */
+
 
 }
 
@@ -157,21 +164,20 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    background-color: blue;
+    background-color:blue;
 }
-.active {
-    background-color: #4CAF50;
-}
+
 
 ul {
     position: fixed;
     top: 0;
-    width: 100%;
+    width:97.5%;
 }
 
 
 .NologgedFiles{
-          margin:0 auto;
+       
+        margin:0 auto;
     	text-align: center;
    		width:400px;
 		padding:5px;
@@ -193,12 +199,14 @@ ul {
 
 
 
-/*Demo specific*/
+/* This is the styling for the text in the DOM "WEB STARTER KIT" */
 body {
   margin: 1em;
   font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
 }
-
+h1{
+    margin-top: 70px;
+}
 h2 {
   color: #ccc;
 }
@@ -241,13 +249,11 @@ h4 {
     background-color: blue; /* Black background color */
     color: #fff; /* White text color */
     text-align: center; /* Centered text */
-    border-radius: 2px; /* Rounded borders */
     padding: 16px; /* Padding */
     position: fixed; /* Sit on top of the screen */
     z-index: 1; /* Add a z-index if needed */
     left: 50%; /* Center the snackbar */
     bottom: 30px; /* 30px from the bottom */
-    box-shadow:  7px 0px 10px 0px gray;
     border-radius: 250px;
 }
 
@@ -255,12 +261,14 @@ h4 {
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
 #snackbar.show {
+
     visibility: visible; /* Show the snackbar */
 
 /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
 However, delay the fade out process for 2.5 seconds */
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
+
 }
 
 /* Animations to fade the snackbar in and out */
@@ -284,5 +292,54 @@ However, delay the fade out process for 2.5 seconds */
     to {bottom: 0; opacity: 0;}
 }
 
+
+
+
+
+
+
+
+/*----------------------------------------------*/
+
+
+/*this is  the modal box */
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 

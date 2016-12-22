@@ -14,19 +14,26 @@
            
            
         <ul>
-            <li><a href="default.asp">Home</a></li>
-            <li><a href="news.asp">News</a></li>
-            <li><a href="contact.asp">Contact</a></li>
-            <li><a href="about.asp">About</a></li>
+            <li id = "myBtn1" onclick = "modalbox(this.id)"><a href=# >LoggList</a></li>
+            <li id = "myBtn2" onclick = "modalbox(this.id)"><a href=# >News</a></li>
+            <li id = "myBtn3" onclick = "modalbox(this.id)"><a href=# >Contact</a></li>
+            <li id = "myBtn4" onclick = "modalbox(this.id)"><a href=# >About</a></li>
         </ul>
+
+        <!-- The Modal -->
+<div id="myModal" class="modal">
+
+   <!-- Modal content -->
+   <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+   </div>
+
+</div>
 
 
 <h1>Web Starter Kit</h1>
 <h2>Audio Production Tool</h2>
-
-
-
-
 
 
 
@@ -68,7 +75,7 @@
             <button class = "box" id = "button56" onclick = "playPause(this.id);"></button>
 
             <!-- Will create a feeback paragraph(shows the user which audio-boxes have been clicked) and also create a new Button that stores those audio files in a "SESSION STORAGE" object for later playback -->
-               <button class="test2" onclick="log();">LOGG AUDIO </button>   
+               <button class="test2" onclick="log();"> LOGG AUDIO </button>   
             <!--the Refresh button removes all audio files in the "TEMPORAY STORAGE " after it has already been logged -->
                <button class="refresh" onclick="refresh();"> REFRESH</button> 
         </div> 
@@ -88,13 +95,7 @@
 
 
 <!-- The actual snackbar -->
-
-
-        
      
-         
-       
-        
       
 <!--importing the javascript library -->
 <script type="text/javascript" src="js/jquery.js"></script>

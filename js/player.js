@@ -222,12 +222,13 @@ functionalities */
 						for (var i=0; i < ButtonsPlaying.length; i++){
                          
                         if (ButtonsPlaying[i].paused){
-                         	
-                         	ButtonsPlaying.splice(i,1);    // removes the audio object into the ButtonsPlaying(global array)
+
+                            // removes the audio object into the ButtonsPlaying(global array)
+                     	    ButtonsPlaying.splice(i,1);   
 
 
-                         	testingID.splice(i, 1);        // removes the id of the same audio object into another testingID(another global variale)
-
+                            // removes the id of the same audio object into another testingID(another global variale)
+                         	testingID.splice(i, 1);        
                                 }
 					        }
                         }
@@ -241,6 +242,8 @@ functionalities */
 
                  function log(){
 
+      				    
+
       				    myFunction();   // calling function 
 
       				    /*function is responsible for creating a "snackbar" to inform the user to
@@ -248,24 +251,27 @@ functionalities */
    					    function myFunction() {
    							// Get the snackbar DIV
     						var x = document.getElementById("snackbar")
-
+    						
+    							x.style.opacity = 0.4; 
 
 						if (ButtonsPlaying.length > 0 ){
- 
- 							x.innerText = "Great! Now Click Refresh!";  
+  						    
+     						    x.innerText = "Great! Now Click Refresh!";  
  								x.className = "show";
- 								     x.style.backgroundColor = "blue";  
+ 								x.style.backgroundColor = "#0000BE"; 
  								 }
 
 						else {
-	 					x.innerText = "sorry try again" ;  // confirmation of how many audio objects are playing
-   						 // Add the "show" class to DIV
-    				    x.className = "show";
-     					x.style.backgroundColor = "red";
+
+	 							x.innerText = "ERROR - Click on boxes before logging" ;  // confirmation of how many audio objects are playing
+   								 // Add the "show" class to DIV
+    				    		x.className = "show";
+     							x.style.backgroundColor = "#8F0000";
+
 						}
 
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+                        // After 3 seconds, remove the show class from DIV
+                        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
                     	
@@ -278,74 +284,72 @@ functionalities */
                     var playButton= document.createElement("button"); //test  create the element
 
                     
-
+                    // determines how the feedback paragraph should look like depending on number of audio-boxed clicked
                     if (ButtonsPlaying.length === 0 ){
 
-                    feedback.innerText = "ERROR NO AUDIO FILES "   // confirmation of how many audio objects are playing
-                    
-                    feedback.className = "NologgedFiles"; 
-                    playButton.style.opacity = 0.4;   // connecting the " playButton " node object with css styling
+                    		 // confirmation of how many audio objects are playing
+                          	 feedback.innerText = "(ERROR) no sound-files " ;  
+                             
 
+                             console.log("we got oursleves an error peopele !!");
+                             // connecting the " playButton " node object with css styling
+                         	 feedback.className = "NologgedFiles"; 
+                        	 playButton.style.opacity = 0.4;  
                      }
-                     else{
+                     else {
 
-                     // confirmation of how many audio objects are playing
-                    feedback.innerText =  ButtonsPlaying.length + " audio files ready for playback";   
+                          	 // confirmation of how many audio objects are playing
+                          	 feedback.innerText =  ButtonsPlaying.length + " audio files ready for playback";   
                     
-                    // connecting the " feedback " node object with css styling 
-                    feedback.className = "loggingStyle";  
+                         	 // connecting the " feedback " node object with css styling 
+                          	 feedback.className = "loggingStyle";  
+                  }
 
 
-                     }
-
-
-
-
-
-                    playButton.innerText = "Log " +logCounter;   
+ 	                 playButton.innerText = "Log " +logCounter;   
                     
-
-
-                    playButton.className = "testbuton";   // connecting the " playButton " node object with css styling
+                     // connecting the " playButton " node object with css styling
+                     playButton.className = "testbuton";   
                  
+                     // adding the new ID number as string to the test variable
+                     test = "newbutton"+logCounter;          
+                       
+                     // adding a ID string to the  new "playButton"
+                     playButton.setAttribute("id", test);     
+
+                    
                    
-                     test = "newbutton"+logCounter;           // adding the new ID number as string to the test variable 
-
-                     playButton.setAttribute("id", test);     // adding a ID string to the  new "playButton"
-
-
-                     console.log(test, " testing if its a another string ");
-                     console.log(playButton.id, "this is the log string fuck!!!"); // this is good 
                      
                      playButton.onclick =  function() { pauseplay(this.id); };   // playbutton fires only when clicked
 
 
 
-                     var destinationNode2 = document.getElementsByTagName('div')[2]; //test- pick the destination parent node/tag
+                     var destinationNode2 = document.getElementsByTagName('div')[2]; //pick the third div in the dom tree to place this node
 
                          destinationNode2.appendChild(playButton);
 
-                     var destinationNode = document.getElementsByTagName('div')[2]; //test- pick the destination parent node/tag
+                     var destinationNode = document.getElementsByTagName('div')[2]; //pick the third div in the dom tree to place this node
 
-                         destinationNode.appendChild(feedback);      // test
+                         destinationNode.appendChild(feedback);      
 
 
                             
 
-                          hello();
+                        hello();
 
                			function hello() {
                         
-                        //create a new array that stores audio combination
+                        //create a new array that stores audio-files
   					    var loggedButtons = [];                 
 
                            for(var x=0; x < ButtonsPlaying.length; x++){
 
-                                 // using jqury for deep copy of the Temp array
+                                 // Create a local temp array to deep copy all the sound-files from the temp array/storage
                                  loggedButtons[x] = jQuery.extend(true, {}, ButtonsPlaying[x]); 
   
                           }
-                         // meant to test if a deep copy did occure and both objects are referencing the same address
+                         
+                         // meant to test if a deep copy did occur and both objects are referencing the same address
                         console.log(loggedButtons, "this the copy");     
                         console.log(ButtonsPlaying, "this the global");     
 
@@ -356,6 +360,9 @@ functionalities */
                            
              		            } 
 							}
+
+
+
 
 
                        function refresh(){
@@ -376,9 +383,9 @@ functionalities */
 									 	 ButtonsPlaying.splice(num,1); 
 									 	 testingID.splice(num,1); 
 									 	 
-									 	 // index next index gets skipped somewhere aroud this part of the code
-
-									 	 num -= 1;      // every other index was getting skipped so this line moves to the previous index
+									 	 /*index next index gets skipped somewhere aroud this part of the code
+                                         every other index was getting skipped so this line moves to the previous index */
+									 	 num -= 1;       
 
 									 						
 								         }
@@ -393,7 +400,7 @@ functionalities */
 
 
 
-						 // test is the ID of the logg button that been clicked
+						// The test variable is assinged the ID of the playback-button that has been clicked
 	                    function pauseplay(test){                      				
 
                         		var object = [];
@@ -414,43 +421,80 @@ functionalities */
                                   
                                   for (var x=0; x < Global_Audio_Array.length; x++){
                                               
-
-                                              
-
+                                  	  // playing every sound-file in the sessionstorage of .this playback button
                                       if (object[i].src === Global_Audio_Array[x].src){
 
                                              console.log(object[i]+ "and global "+ Global_Audio_Array[x]+ "are the same"); 
+
                                                if(Global_Audio_Array[x].paused){
 
                                                 Global_Audio_Array[x].play(); 
                                                 var variable = Global_Audio_Array[x].id;
-                                                console.log(variable);
-
-               									
-
-
-                                                }
-
+                                              }
+                                               //if sound-files are playing then the toggle pause
                                               else  {
  							                  Global_Audio_Array[x].pause();
 
 
                                              }
                                               
-
-                                        }
-
+                                      }
+                                      /* if the sound-files that have the same index number are not a match then 
+                                      about this message to the console */
                                       else{
 
                                          console.log("not a match..next"); 
                             	
-                            	}
+                             	}
                             }
                         }
                }
+
+              
            
+               function modalbox(number){
+
+               	if ()
+
+                  	// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+
+if (number === "myBtn1"){
+
+	var btn = document.getElementById(number);
 
 
+
+
+}
+
+
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+                  }
 
    
 
