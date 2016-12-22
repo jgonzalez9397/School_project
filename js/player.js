@@ -324,13 +324,13 @@ functionalities */
 
 
 
-                     var destinationNode2 = document.getElementsByTagName('div')[2]; //pick the third div in the dom tree to place this node
+                     var destinationNode2 = document.getElementsByTagName('div')[2]; //test- pick the destination parent node/tag
 
                          destinationNode2.appendChild(playButton);
 
-                     var destinationNode = document.getElementsByTagName('div')[2]; //pick the third div in the dom tree to place this node
+                     var destinationNode = document.getElementsByTagName('div')[2]; //test- pick the destination parent node/tag
 
-                         destinationNode.appendChild(feedback);      
+                         destinationNode.appendChild(feedback);      // test
 
 
                             
@@ -454,22 +454,14 @@ functionalities */
            
                function modalbox(number){
 
-               	if ()
+               
 
                   	// Get the modal
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
 
-if (number === "myBtn1"){
-
-	var btn = document.getElementById(number);
-
-
-
-
-}
-
+var btn = document.getElementById(number);
 
 
 
