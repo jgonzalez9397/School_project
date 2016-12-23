@@ -279,9 +279,9 @@ functionalities */
                     
                     console.log("this the end of the session" + ButtonsPlaying.length );
 
-                    var feedback = document.createElement("p"); 
+                    var feedback = document.createElement("p");       // create a node to later place in the dom tree
                     
-                    var playButton= document.createElement("button"); //test  create the element
+                    var playButton= document.createElement("button"); // create a node to later place in the dom tree
 
                     
                     // determines how the feedback paragraph should look like depending on number of audio-boxed clicked
@@ -324,11 +324,11 @@ functionalities */
 
 
 
-                     var destinationNode2 = document.getElementsByTagName('div')[2]; //test- pick the destination parent node/tag
+                     var destinationNode2 = document.getElementsByTagName('div')[2]; //placing the node in the second div in the DOM
 
                          destinationNode2.appendChild(playButton);
 
-                     var destinationNode = document.getElementsByTagName('div')[2]; //test- pick the destination parent node/tag
+                     var destinationNode = document.getElementsByTagName('div')[2]; //placing the node in the second div in the DOM
 
                          destinationNode.appendChild(feedback);      // test
 
@@ -457,13 +457,34 @@ functionalities */
                
 
                   	// Get the modal
-var modal = document.getElementById('myModal');
+var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
 
 var btn = document.getElementById(number);
 
+var text = document.getElementById("txt"); 
 
+
+if (number === "LoggList"){
+	
+
+	text.innerText = "This is the LIST:";
+}
+
+if(number === "News"){
+	text.innerText = "No news so far guys. Stay tuned!!";
+ 
+}
+
+if(number === "Contact"){
+	text.innerText = "My github page is https://github.com/jgonzalez9397 and LinkIn is https://www.linkedin.com/in/jonathan-gonzalez-8893a0b8?trk=nav_responsive_tab_profile";
+ 
+}
+
+if (number === "About"){
+	text.innerText = "Hi my name is Jonathan. I really hope you like this site! If you want to know more about me and my journey, dont be shy and check out my social medias and youtube Channel. Dont forget to SMASH that LIKE BUTTON"; 
+}
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
