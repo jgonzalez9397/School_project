@@ -1,5 +1,5 @@
 /* This is the player javascript file. It will handle audio-file,storage, and playback 
-functionalities */
+functionalities and more */
 
 
 
